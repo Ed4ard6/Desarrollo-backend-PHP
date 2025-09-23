@@ -1,0 +1,12 @@
+
+# public/.htaccess
+Options -MultiViews
+RewriteEngine On
+
+# Si tu DocumentRoot es la carpeta "public" (tu caso en Laragon al hacer Switch Document Root)
+RewriteBase /
+
+# Si el recurso no es un archivo ni una carpeta real, envíalo a index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
