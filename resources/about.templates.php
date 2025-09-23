@@ -1,6 +1,5 @@
 <?php
 require __DIR__ . '/partials/header.php';
-require __DIR__ . '/partials/navbar.php';
 ?>
 
 <h1>Sobre mi</h1>
