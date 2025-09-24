@@ -16,12 +16,12 @@ require __DIR__ . '/partials/header.php';
     
         <article>
             <h3 class="text-lg font-semibold text-gray-900 hover:text-gray-600">
-                <a href="/post?id=<?= $post['id'] ?>">
-                    <?= $post['title'] ?>
+                <a href="/post/<?= $post->id ?>">
+                    <?= $post->title ?>
                 </a>
             </h3>
 
-            <p class="mt-2 text-sm text-gray-600"><?= $post['excerpt'] ?></p>
+            <p class="mt-2 text-sm text-gray-600"><?= $post->excerpt ?></p>
         </article>
 
     <?php endforeach; ?>

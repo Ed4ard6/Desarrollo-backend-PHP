@@ -6,27 +6,28 @@ $routes = require __DIR__ . '/../routes/web.php';
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-// var_dump($path);
-// die();
+// Divide la ruta en segmentos: /post/6 → ["post", "6"]
+$segments = explode('/', trim($path, '/'));
 
-$basePath = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
+// Primer segmento: nombre de la ruta
+$routeName = $segments[0] ?? '';
 
-if ($basePath !== '' && strpos($path, $basePath) === 0) {
-    $cleanedUri = substr($path, strlen($basePath));
-} else {
-    $cleanedUri = $path;
+// Segundo segmento (si existe): ID
+$id = $segments[1] ?? null;
+
+if ($routeName === '') {
+    $routeName = '/';
 }
 
-$cleanedUri = '/' . ltrim($cleanedUri, '/');
-if ($cleanedUri === '//') $cleanedUri = '/';
-if ($cleanedUri === '')   $cleanedUri = '/';
-
-$route = $routes[$cleanedUri] ?? ($cleanedUri === '/' ? $routes['/'] : null);
+$route = $routes['/' . $routeName] ?? ($routeName === '/' ? $routes['/'] : null);
 
 if ($route) {
+    if ($id) {
+        $_GET['id'] = $id;
+    }
     require __DIR__ . '/../' . $route;
 } else {
     http_response_code(404);
-    echo '<h1>404 - No encontrado</h1>';
+    echo "<h1>404 - Página no encontrada</h1>";
     exit;
 }
