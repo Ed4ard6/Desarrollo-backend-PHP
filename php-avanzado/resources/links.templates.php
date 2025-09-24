@@ -16,17 +16,23 @@ require __DIR__ . '/partials/header.php';
 
         <article>
             <h3 class="text-lg font-semibold text-gray-900 hover:text-gray-600">
-                <a href="<?= $link['url'] ?>" target="_blank" rel="noopener noreferrer">
-                    <?= $link['title'] ?>
+                <a href="<?= $link->url ?>" target="_blank" rel="noopener noreferrer">
+                    <?= $link->title ?>
                 </a>
             </h3>
             
             <p class="mt-2 text-sm text-gray-600"><?= 
-            $link['description']?></p>
+            $link->description?></p>
         </article>
 
     <?php endforeach; ?>
 
+</div>
+
+<div class="my-16">
+    <a href="/links/create" class="text-sm font-semibold text-gray-900">
+        Registrar &rarr;
+    </a>
 </div>
 
 <?php
