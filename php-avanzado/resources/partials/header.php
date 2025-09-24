@@ -10,7 +10,9 @@
 </head>
 
 <body>
-    <?php require __DIR__ . '/navbar.php'; ?>
+    <div class="mb-8">
+        <?php require __DIR__ . '/navbar.php'; ?>
+    </div>
     
     <div class="container mx-auto p-4">
     
